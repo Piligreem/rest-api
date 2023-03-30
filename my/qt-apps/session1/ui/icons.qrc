@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="personal">
+    <file>imgs/person.png</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>imgs/logo.png</file>
+  </qresource>
+  <qresource prefix="group">
+    <file>imgs/group.png</file>
+  </qresource>
+</RCC>
