@@ -9,13 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ui.personal_visit import Ui_PersonalVisitForm
+from ui.group_visit import Ui_GroupVisitForm
 import ui.icons_rc
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 581)
+        MainWindow.setFixedSize(800, 581)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/logo/imgs/logo.png").scaled(QtCore.QSize(128, 128)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -61,7 +64,7 @@ class Ui_MainWindow(object):
         self.pushButton.setFlat(False)
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.splitter)
-        font = QtGui.QFont()
+        font = QtGui.QFont() 
         font.setFamily("Ubuntu")
         font.setPointSize(11)
         font.setBold(True)
@@ -86,16 +89,26 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
+
+
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def get_personal_visit_window(self, form):
+        self.pers_visit_win = Ui_PersonalVisitForm()
+        return self.pers_visit_win.get_form_ui(form)
+
+    def get_group_visit_window(self, form):
+        self.group_visit_win = Ui_GroupVisitForm()
+        return self.group_visit_win.get_form_ui(form)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Тип заявки"))
-        self.pushButton.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_2.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton.setText(_translate("MainWindow", "Персональное посещение"))
+        self.pushButton_2.setText(_translate("MainWindow", "Групповое посещение"))
         self.label_2.setText(_translate("MainWindow", "Название компании"))
 
 
